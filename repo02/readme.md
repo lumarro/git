@@ -30,8 +30,20 @@
 |git show "hash commit"|Muestra los cambios realizados en los documentos commiteados|-|
 |git branch|Muestra las ramas que hay|Si añades un nombre delante de branch se te crea una rama con ese nombre|
 |git push --set-upstream origin "nombre de rama"|Hace el push y la creación de la rama en el repositorio en remoto a la vez|-|
-|git merge "nombre de rama que se quiere juntar"|Hace un merge fast-forward (junta) una rama dentro de la rama en la que estes|-|
+|git merge "nombre de rama que se quiere juntar"|Hace un merge fast-forward (junta) una rama dentro de la rama en la que estes|Esto hace que se junten las ramas pero creando un commit nuevo en la rama en la que lo has juntado|
 |git merge --no-ff nombrerama -m "mensaje"|Junta las ramas de forma no fast-forward, es decir solo junta el último commit a la rama mergeada|**Incluir comillas**|
 |git branch -d "nombrederama"|Elimina la rama en el repositorio local|-|
 |git push origin --delete "nombrederama"|Elimina la rama en repositorio remoto|-|
 |git log --since='Feb 1 2022' --until='Feb 28 2022'|Ejemplo para filtrar logs por fechas|**Incluir comillas**|
+|git rebase "rama"|Estando en otra rama, pilla los commits y los traslada a la rama escrita|-|
+|git rebase "rama1" "rama2"|Pasa los commits de la rama2 a la rama1|-|
+|git checkout HEAD^ o git checkout HEAD~n|Te pone sobre el HEAD y lo manda una posición detrás con ^ o n posiciones detras con ~n|Tanto puede ponerse HEAD o puede ponerse el nombre de una rama para mover el HEAD a esa rama u posiciones detras de esa rama|
+|git branch -f "rama" HEAD~n|Fuerza el movimiento de esa rama n posiciones detras|-|
+|git reset HEAD~n|"Borra" el ultimo commit y te pone sobre el anterior|-|
+|git revert HEAD|Crea un commit con los cambios hechos en vez de borrarlo|-|
+|git cherry-pick "hash1" "hash2"...|En la rama/posición que estés añades los commits a través de sus respectivos hashes a esa rama|-|
+|git rebase -i HEAD~n|En una posición n veces atrás haces un rebase de varios commits eligiendolos o no tu mismo|-|
+|git commit --ammend -m "Nuevo mensaje"|Borra y crea un commit nuevo "arreglado" actual con cambios como por ejemplo el mensaje o demás|-|
+|git tag "tag" "hash"|Crea una etiqueta permamente "tag" en el commit del "hash"|Seleccionar la etiqueta con checkout nos lleva hasta el hash del commit|
+|git describe "rama"|Nos da la info de nuestra rama hasta el tag más cercando, diciendo cuantos commits hay de distancia y cual es el hash donde esta la rama|-|
+|git checkout HEAD^n|Puede haber commits con diferentes padres a causa de por ejemplo un merge, en ese caso ^n nos indica sobre que padre ir, siendo el padre directo el ^1|Un truco para crear una rama detras de la que estés: git branch "ramanueva" "ramaactual"^~ ya que te creeará la rama nueva unas posiciones y unos padres determinados detras de la actual|
