@@ -18,7 +18,9 @@
 |git commit -m "Mensaje"|Sube el fichero de la starting area al local repository|**Incluir comillas**|
 |git commit -am "Mensaje"|Sube el fichero de la starting area al local repository incluidos los cambios|**Incluir comillas**|
 |git log|Visualiza el historial con los commits realizados|Si añadimos "--all --decorate --oneline --graph" despues de log (sin incluir comillas) nos lo pondrá bonito.|
-|git push|Sube los cambios al remote repository|-|
+|git push origin main|Sube los cambios al repositorio origin (nombre por defecto) de tu main al main remoto|-|
+|git push origin "origen":"destino"|Pushea de la rama origen a la rama remota destino, que si no existe la crea en remoto|También se puden usar referencias en el origen como ^ ~n para subir hasta commits en posiciones anteriores|
+|git fetch origin main/git fetch origin "origen":"destino"|Lo mismo pero al revés, se lleva los commits remotos al destino local|-|
 |git remote -v|Ver los repositorios remotos asociados|-|
 |git branch -M main|Crea una rama main|-|
 |git remote add origin "link"|Añade un remote repository|-|
@@ -47,3 +49,9 @@
 |git tag "tag" "hash"|Crea una etiqueta permamente "tag" en el commit del "hash"|Seleccionar la etiqueta con checkout nos lleva hasta el hash del commit|
 |git describe "rama"|Nos da la info de nuestra rama hasta el tag más cercando, diciendo cuantos commits hay de distancia y cual es el hash donde esta la rama|-|
 |git checkout HEAD^n|Puede haber commits con diferentes padres a causa de por ejemplo un merge, en ese caso ^n nos indica sobre que padre ir, siendo el padre directo el ^1|Un truco para crear una rama detras de la que estés: git branch "ramanueva" "ramaactual"^~ ya que te creeará la rama nueva unas posiciones y unos padres determinados detras de la actual|
+|git fetch|Baja los commits en remoto que no estan en el local y actualiza las ramas remotas en el repositorio local pero no actualiza las ramas locales|Las ramas remotas en el local es la representación del respositorio remoto en nuestro ordenador|
+|git fetch + git merge origin/main = git pull|Un git pull es realmente una actualización de las ramas más un merge de la representación de las ramas remotas sobre nuestras ramas locales|-|
+|git fetch + git rebase origin/main = git pull --rebase|Es como un git pull pero actualizando el pull sobre el trabajo que tú has hecho. Es decir si yo he avanzado en un trabajo pero mis compañeros también y lo han subido antes a remoto yo podría descargarme lo suyo y actualizarlo con lo mío así|En resumen la cosa es que antes hay que hacer un pull de actualización y luego pushear|
+|Pros y contra de rebasear|Hace que el arbol de commits se vea limpio porque siguen una línea|Modifica la historia aparente de mi arbol de commits|
+|git checkout -b "ramalocal" "origin/ramaremota"|Crea una rama local que sigue a una rama remota por ejemplo "origin/main" y aunque en nuestro local se actualice la rama local en el repositorio remoto lo hara la rama origin/main|-|
+|git branch -u "origin/main" "ramalocal"|Lo mismo pero escrito diferente|-|
