@@ -55,3 +55,6 @@
 |Pros y contra de rebasear|Hace que el arbol de commits se vea limpio porque siguen una línea|Modifica la historia aparente de mi arbol de commits|
 |git checkout -b "ramalocal" "origin/ramaremota"|Crea una rama local que sigue a una rama remota por ejemplo "origin/main" y aunque en nuestro local se actualice la rama local en el repositorio remoto lo hara la rama origin/main|-|
 |git branch -u "origin/main" "ramalocal"|Lo mismo pero escrito diferente|-|
+|git push origin :"rama"|Elimina la rama remota y la representación de la rama remota|-|
+|git fetch origin :"rama"|Crea una rama local nueva con el nombre que le demos|-|
+|git pull origin "lugar":"destino"|Coge los commits de la rama remota lugar y los mergea con lo que tengamos creando una rama nueva llamada destino|-|
