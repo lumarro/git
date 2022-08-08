@@ -22,6 +22,7 @@
 |git push origin "origen":"destino"|Pushea de la rama origen a la rama remota destino, que si no existe la crea en remoto|También se puden usar referencias en el origen como ^ ~n para subir hasta commits en posiciones anteriores|
 |git fetch origin main/git fetch origin "origen":"destino"|Lo mismo pero al revés, se lleva los commits remotos al destino local|-|
 |git remote -v|Ver los repositorios remotos asociados|-|
+|git remote rm origin|Elimina el enlace de nuestro repositorio local con el remoto|En interent hay más instrucciones para otras cosas|
 |git branch -M main|Crea una rama main|-|
 |git remote add origin "link"|Añade un remote repository|-|
 |git pull origin main|Hace un pull del main|-|
